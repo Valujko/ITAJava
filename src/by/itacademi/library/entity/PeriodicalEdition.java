@@ -7,7 +7,11 @@ public class PeriodicalEdition {
 		this("Default");
 		
 	}
-
+	public static void showAll(PeriodicalEdition[] t) {
+		for (PeriodicalEdition p : t)
+			System.out.println(p.toString());
+	}
+	
 	public PeriodicalEdition(String title) {
 	    super();
 		this.title = title;

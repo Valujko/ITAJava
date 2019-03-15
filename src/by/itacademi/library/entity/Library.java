@@ -1,6 +1,7 @@
 package by.itacademi.library.entity;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public class Library {
 	private PeriodicalEdition[] editions;
@@ -80,7 +81,47 @@ public class Library {
 			System.out.println(pe.toString());
 		
 	}
+	public Library getTestLibrary(int size) {
+		Library testLibrary = new Library();
+		Book tempBook;
+		Booklet tempBooklet;
+		Magazine tempMagazine;
+		Date tempDate;
+		Articls tempArticls;
+		Author tempAuthor;
+		String tempContent;
+		
+		for (int i = 0; i < size; i++) {
+			testLibrary.addEdition(new Book("Book" + i + 1, new Author("Author" + i), 10 + i * 100)); // version one
 
+			tempBook = new Book("Book" + i); // version two
+			tempBook.setAuthor(new Author("Author" + i));
+			tempBook.setPages(i * 100);
+			testLibrary.addEdition(tempBook);
+
+			tempBooklet = new Booklet("Booklet" + i);
+			tempBooklet.setTopic("Topic" + i);
+			tempDate = new Date(i * 1000000000);
+			tempBooklet.setDate(tempDate);
+			testLibrary.addEdition(tempBooklet);
+			
+			Articls[] masArt= new Articls[i*5];
+			for (int j=0;j<i*5;j++) {
+				tempArticls=new Articls("content"+i, "author"+j);
+				masArt[j]=tempArticls;
+				
+			}
+			
+			tempMagazine = new Magazine("Magazine" + i);
+			tempMagazine.setArticles(masArt);
+			testLibrary.addEdition(tempMagazine);
+
+		}
+
+		
+		return testLibrary;
+		
+	}
 	public Book[] seachBookByAuthor(Author author) {
 		Book[] tempBooks=new Book[this.index];
 		int bookIndex=0;

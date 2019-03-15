@@ -34,7 +34,10 @@ public class Book extends PeriodicalEdition {
 		this.author = author;
 		this.pages = pages;
 	}
-
+    public static void showAll(Book[] tempBooks) {
+    	for (Book b : tempBooks)
+			System.out.println(b.toString());
+    }
 	public String toString() {
 		String st=String.format("Type of Eqipment:Book      Title: %-20sAuthor: %-20sPages: %-4d",
 								this.getTitle(),
